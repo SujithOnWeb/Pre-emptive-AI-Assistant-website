@@ -1,0 +1,7 @@
+{
+  "name": "Pre-emptive AI Assistant",
+  "description": "A conversational interface that anticipates user intent, streamlines the journey, and provides proactive suggestions and content, making the user experience feel intuitive and predictive.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}

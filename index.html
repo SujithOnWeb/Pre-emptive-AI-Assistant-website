@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pre-emptive AI Assistant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* For custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #1e1b4b; /* indigo-950 */
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #4338ca; /* indigo-700 */
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #4f46e5; /* indigo-600 */
+      }
+
+      /* Avatar animations */
+      @keyframes speak-mouth {
+        0%, 100% { transform: scaleY(0.2) translateY(3px); }
+        50% { transform: scaleY(1) translateY(0); }
+      }
+      .animate-speak-mouth {
+        transform-origin: center;
+        animation: speak-mouth 0.5s infinite ease-in-out;
+      }
+
+      @keyframes thinking-glow {
+        0%, 100% { opacity: 0.3; transform: scale(1); }
+        50% { opacity: 0.7; transform: scale(1.05); }
+      }
+      .animate-thinking-glow {
+        animation: thinking-glow 1.5s infinite ease-in-out;
+      }
+      
+      @keyframes fade-in {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-fade-in {
+        animation: fade-in 0.5s ease-out forwards;
+      }
+
+      /* Microphone listening animation */
+      @keyframes listening-pulse {
+        0%, 100% {
+          box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.7);
+        }
+        50% {
+          box-shadow: 0 0 0 10px rgba(79, 70, 229, 0);
+        }
+      }
+      .animate-listening {
+        animation: listening-pulse 1.5s infinite cubic-bezier(0.66, 0, 0, 1);
+      }
+
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.28.0"
+  }
+}
+</script>
+</head>
+  <body class="bg-slate-900">
+    <div id="root"></div>
+  </body>
+</html>
