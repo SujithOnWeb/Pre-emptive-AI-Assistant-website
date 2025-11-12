@@ -1,43 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pre-emptive AI Assistant</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Foresters Financials Agent</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script>
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                primary: "#8B5CF6", // A vibrant purple
+                "background-light": "#F3F4F6", // Light Gray
+                "background-dark": "#0D1117", // Very Dark Blue
+                "surface-light": "#FFFFFF",
+                "surface-dark": "#161B22",
+                "glow-start": "rgba(139, 92, 246, 0.5)",
+                "glow-end": "rgba(139, 92, 246, 0)",
+              },
+              fontFamily: {
+                display: ["Poppins", "sans-serif"],
+              },
+              borderRadius: {
+                DEFAULT: "1rem",
+              },
+              boxShadow: {
+                'glow-primary': '0 0 15px rgba(139, 92, 246, 0.5), 0 0 30px rgba(139, 92, 246, 0.3)',
+                'glow-primary-light': '0 0 10px rgba(139, 92, 246, 0.2)',
+              }
+            },
+          },
+        };
+      </script>
     <style>
       /* For custom scrollbar */
       ::-webkit-scrollbar {
         width: 8px;
+        height: 8px;
       }
       ::-webkit-scrollbar-track {
-        background: #1e1b4b; /* indigo-950 */
+        background: rgba(0,0,0,0.1);
+        border-radius: 4px;
       }
       ::-webkit-scrollbar-thumb {
-        background: #4338ca; /* indigo-700 */
+        background: #8B5CF6; /* primary */
         border-radius: 4px;
       }
       ::-webkit-scrollbar-thumb:hover {
-        background: #4f46e5; /* indigo-600 */
+        background: #7c3aed;
       }
 
       /* Avatar animations */
-      @keyframes speak-mouth {
-        0%, 100% { transform: scaleY(0.2) translateY(3px); }
-        50% { transform: scaleY(1) translateY(0); }
-      }
-      .animate-speak-mouth {
-        transform-origin: center;
-        animation: speak-mouth 0.5s infinite ease-in-out;
-      }
-
       @keyframes thinking-glow {
-        0%, 100% { opacity: 0.3; transform: scale(1); }
-        50% { opacity: 0.7; transform: scale(1.05); }
+        0%, 100% { box-shadow: 0 0 20px rgba(139, 92, 246, 0.2); }
+        50% { box-shadow: 0 0 35px rgba(139, 92, 246, 0.5); }
       }
       .animate-thinking-glow {
         animation: thinking-glow 1.5s infinite ease-in-out;
+      }
+      
+      @keyframes speaking-pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.03); }
+      }
+      .animate-speaking-pulse {
+        animation: speaking-pulse 0.7s infinite ease-in-out;
       }
       
       @keyframes fade-in {
@@ -51,16 +82,40 @@
       /* Microphone listening animation */
       @keyframes listening-pulse {
         0%, 100% {
-          box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.7);
+          box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.7);
         }
         50% {
-          box-shadow: 0 0 0 10px rgba(79, 70, 229, 0);
+          box-shadow: 0 0 0 12px rgba(139, 92, 246, 0);
         }
       }
       .animate-listening {
         animation: listening-pulse 1.5s infinite cubic-bezier(0.66, 0, 0, 1);
       }
 
+      /* New styles from layout */
+      .background-gradient {
+        background: radial-gradient(circle at 50% 30%, rgba(139, 92, 246, 0.15) 0%, rgba(13, 17, 23, 0) 50%);
+      }
+      .light .background-gradient {
+        background: radial-gradient(circle at 50% 30%, rgba(139, 92, 246, 0.05) 0%, rgba(243, 244, 246, 0) 50%);
+      }
+      .suggestion-card {
+          border: 1px solid transparent;
+          background-image: linear-gradient(to right, var(--tw-gradient-stops));
+          background-origin: border-box;
+          background-clip: padding-box, border-box;
+      }
+      .dark .suggestion-card {
+          --tw-gradient-from: rgba(255, 255, 255, 0.1);
+          --tw-gradient-to: rgba(255, 255, 255, 0.05);
+      }
+      .light .suggestion-card {
+          --tw-gradient-from: rgba(0, 0, 0, 0.1);
+          --tw-gradient-to: rgba(0, 0, 0, 0.05);
+      }
+      body {
+        min-height: max(884px, 100dvh);
+      }
     </style>
   <script type="importmap">
 {
@@ -73,7 +128,7 @@
 }
 </script>
 </head>
-  <body class="bg-slate-900">
+  <body class="bg-background-light dark:bg-background-dark font-display antialiased">
     <div id="root"></div>
   </body>
 </html>
